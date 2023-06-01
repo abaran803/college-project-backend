@@ -42,7 +42,15 @@ const codeData=new mongoose.Schema({
     }
 })
 const leaderBoard= new mongoose.Schema({
-    noofQuizzes:{
+    rank: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    quizCount:{
         type:Number,
         required:true
     },
@@ -54,7 +62,7 @@ const leaderBoard= new mongoose.Schema({
 
 
 const quiz= new mongoose.Schema({
-    algorithmName:{
+    algoName:{
         type:String,
         required:true
     },
@@ -62,7 +70,7 @@ const quiz= new mongoose.Schema({
         type:String,
         required:true
     },
-    optionsArray:{
+    options:{
         type:Array,
         required:true
     },

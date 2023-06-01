@@ -111,7 +111,8 @@ const getLeaderBoard = async (req, res) => {
     try {
         const perPage = req.params.perPage
         const page = req.params.page
-        const response = await LeaderBoard.find({ name: req.body.name, perPage, page }).skip(perPage * page).limit(perPage).sort({ "score": 1 });
+        // const response = await LeaderBoard.find({ name: req.body.name, perPage, page }).skip(perPage * page).limit(perPage).sort({ "score": 1 });
+        const response = await LeaderBoard.find().sort({ "score": -1 });
         if (!response) {
             throw new Error("No Error found");
         }
@@ -125,7 +126,9 @@ const getLeaderBoard = async (req, res) => {
 const getQuiz = async (req, res) => {
     try {
         const algorithmName = req.params.algorithmName;
-        const response = await Quiz.find({ algorithmName });
+        console.log(algorithmName);
+        const response = await Quiz.find({ algoName: algorithmName }, {_id: 0, questionNumber: 1, algoName: 1, question: 1, options: 1});
+        console.log(response);
         if (!response) {
             throw new Error("No Error found");
         }

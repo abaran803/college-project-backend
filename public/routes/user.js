@@ -5,7 +5,7 @@ const express = require('express');
 const { get } = require('mongoose');
 const userRouter = express.Router();
 const {
-    getCodes, getLeaderBoard, getQuizzes, getAlgorithms
+    getCodes, getLeaderBoard, getQuizzes, getAlgorithms, getQuiz
 } = require('../controllers/data');
 
 // Adding Data to Database
@@ -13,6 +13,7 @@ const {
 // Getting Data from Database
 userRouter.get('/getCodes/:language/:algorithmName', getCodes)
 userRouter.get('/getLeaderBoard/:perPage/:page', getLeaderBoard)
+userRouter.get('/getQuiz/:algorithmName', getQuiz)
 userRouter.get('/getQuizzess', getQuizzes)
 userRouter.get('/getAlgorithms', getAlgorithms)
 
