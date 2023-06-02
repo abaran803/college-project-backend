@@ -127,7 +127,7 @@ const getQuiz = async (req, res) => {
     try {
         const algorithmName = req.params.algorithmName;
         console.log(algorithmName);
-        const response = await Quiz.find({ algoName: algorithmName }, {_id: 0, questionNumber: 1, algoName: 1, question: 1, options: 1});
+        const response = await Quiz.find({ algoName: algorithmName });
         console.log(response);
         if (!response) {
             throw new Error("No Error found");
